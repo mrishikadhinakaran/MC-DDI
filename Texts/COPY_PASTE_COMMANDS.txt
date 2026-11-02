@@ -1,0 +1,94 @@
+
+═══════════════════════════════════════════════════════════════════════════════
+COPY-PASTE TERMINAL COMMANDS (In order)
+═══════════════════════════════════════════════════════════════════════════════
+
+PHASE 0 + 1: SETUP (Run these 7 commands)
+─────────────────────────────────────────
+
+# Test internet
+ping google.com
+
+# Check Python version
+python3 --version
+
+# Create project folder
+mkdir -p ~/MC_DDI_Project
+cd ~/MC_DDI_Project
+
+# Create virtual environment
+python3 -m venv mc_ddi_env
+source mc_ddi_env/bin/activate
+
+# You should now see (mc_ddi_env) at start of terminal line
+
+# Upgrade pip
+pip install --upgrade pip
+
+# Install all dependencies (LONG - wait 10-15 minutes)
+pip install torch rdkit-pypi pandas numpy scikit-learn matplotlib seaborn PyTDC tqdm
+
+# Verify all imports
+python3 -c "import torch; import rdkit; import pandas; import tdc; print('✓ All imports successful!')"
+
+
+PHASE 2: DATA DOWNLOAD
+─────────────────────
+
+# Copy download_data.py code from complete-code.md into a file
+# File → New → save as download_data.py
+
+# Run it
+python3 download_data.py
+
+# Check if download worked
+ls -lh drugbank_ddi_data.csv
+head -5 drugbank_ddi_data.csv
+
+
+PHASE 3: PREPROCESSING
+─────────────────────
+
+# Copy preprocess_data.py code from complete-code.md into a file
+# File → New → save as preprocess_data.py
+
+# Run it (LONG - 10-15 minutes)
+python3 preprocess_data.py
+
+# Check if preprocessing worked
+python3 -c "import numpy as np; X = np.load('X_features.npy'); y = np.load('y_labels.npy'); print(f'X shape: {X.shape}'); print(f'y shape: {y.shape}')"
+
+
+PHASE 4: TRAINING
+─────────────────
+
+# Copy model.py, train_baseline.py, self_training.py from complete-code.md
+
+# Run baseline training (LONG - 60 minutes)
+python3 train_baseline.py
+
+# Run self-training (LONG - 45 minutes)
+python3 self_training.py
+
+
+PHASE 5: EVALUATION
+───────────────────
+
+# Copy evaluate.py from complete-code.md
+
+# Run evaluation
+python3 evaluate.py
+
+# Check results
+cat final_results.json
+
+
+PHASE 6: PAPER
+──────────────
+
+# Open paper-template.md
+# Fill in [X], [Y], [Z] placeholders with values from final_results.json
+# Add 2-3 figures
+# Proofread and submit
+
+═══════════════════════════════════════════════════════════════════════════════

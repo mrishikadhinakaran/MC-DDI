@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+mc_ddi_env/
+venv/
+env/
+
+# Data and Model Files (large files)
+*.npy
+*.pth
+*.pkl
+*.h5
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+evaluate_2_output.txt
+eval_debug_log.txt
+
+# Temporary files
+*.tmp
+*.swp
